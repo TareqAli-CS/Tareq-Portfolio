@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     background-color: #1c1a39;
+    color: white;
 }
 
 * {
@@ -11,15 +12,21 @@ body {
 }
 
 #nav-btn {
+    display: none;
     position: fixed;
-    bottom: 0;
-    right: 30px;
-    top: 0;
+    top: 35%;
+    right: 3%;
     font-size: 25px;
     color: white;
     background-color: #3b26d3;
+    text-align: center;
+    cursor: pointer;
     padding: 5px;
-    max-height: min-content;
+    border-radius: 5px;
+}
+
+#toggle {
+    display: none;
 }
 
 header {
@@ -31,6 +38,12 @@ header {
     color: white;
     font-family: "Montserrat", Arial, sans-serif;
     border: 1px solid #3b26d3;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
 }
 
 .logo {
@@ -54,28 +67,6 @@ header {
     border-radius: 100px 10px / 120px;
     background: linear-gradient(#3b26d3, #50509f);
     text-shadow: 1px 1px 30px #161460;
-}
-
-#go-up {
-    position: fixed;
-    bottom: 3%;
-    right: 3%;
-    font-size: 20px;
-    background-color: #4a4953;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 20%;
-}
-
-#go-up:hover {
-    background-color: #5a6268;
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    font-size: 1rem;
 }
 
 nav ul {
@@ -102,8 +93,20 @@ nav li a:hover {
     animation: underline-animation 2s ease-in-out infinite alternate;
 }
 
-#main-container {
+#go-up {
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    font-size: 20px;
+    background-color: #4a4953;
     color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 20%;
+}
+
+#go-up:hover {
+    background-color: #5a6268;
 }
 
 #home {
@@ -113,7 +116,6 @@ nav li a:hover {
     background-attachment: fixed;
     background-size: cover;
     color: white;
-    box-shadow: 12px 12px 2px 2000px rgba(0, 0, 255, .2);
     display: flex;
     animation: 1s ease-out 0s 1 slideInLeft;
 }
@@ -125,15 +127,13 @@ nav li a:hover {
     text-shadow: 1px 10px 7px rgb(82, 81, 81);
 }
 
-
-
 .sub-container {
     max-width: 1170px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    padding:15px;
+    padding: 15px;
     gap: 30px
 }
 
@@ -145,16 +145,24 @@ nav li a:hover {
     font-family: 'Titillium Web', sans-serif;
 }
 
-.sub-container #about-me {
+.sub-container section {
     border: 2px solid #3b26d3;
     padding: 15px;
     border-radius: 10px;
     margin: 0 50px;
-    margin-top:50px;
-
 }
 
+.sub-container section:first-of-type {
+    margin-top: 50px;
+}
 
+.sub-container section:last-of-type {
+    margin-bottom: 50px;
+}
+
+.sub-container #about-me {
+    border-color: #3b26d3;
+}
 
 .about-container {
     display: flex;
@@ -182,12 +190,8 @@ nav li a:hover {
     margin: 0px;
 }
 
-
 .sub-container #skills {
-    border: 2px solid #50509f;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 0 50px;
+    border-color: #50509f;
 }
 
 .skills-container {
@@ -213,11 +217,7 @@ nav li a:hover {
 }
 
 .sub-container #projects {
-    border: 2px solid #3b26d3;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 0 50px;
-    box-sizing: unset !important;
+    border-color: #3b26d3;
 }
 
 .cards-container {
@@ -263,11 +263,7 @@ nav li a:hover {
 }
 
 .sub-container #contact {
-    border: 2px solid #50509f;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 0 50px;
-    margin-bottom: none;
+    border-color: #50509f;
 }
 
 #contact form {
@@ -288,7 +284,6 @@ nav li a:hover {
     height: 50px;
     width: 50%;
     box-shadow: 1px 1px 10px 1px #3b26d3;
-
 }
 
 #contact form textarea {
@@ -296,9 +291,9 @@ nav li a:hover {
 }
 
 #contact form input[type="submit"] {
-    padding: 15px;
     font-size: 20px;
     color: white;
+    width: 53%;
 }
 
 #contact form input[type="submit"]:hover {
@@ -321,7 +316,6 @@ footer {
 
 footer:hover {
     background: linear-gradient(#3b26d3, #50509f);
-
 }
 
 footer div {
@@ -428,32 +422,35 @@ footer p {
     }
 }
 
-
-
-
-#nav-btn {
-    position: fixed;
-    bottom: 0;
-    top: 2%;
-    right: 3%;
-    font-size: 25px;
-    color: white;
-    background-color: #3b26d3;
-    text-align: center;
-    cursor: pointer;
-}
-
 /*>>>>>>>> Media queries <<<<<<<<*/
-/* Mobile */
-@media (max-width:500px) {
+@media (max-width:600px) {
     .logo {
         font-size: 1rem;
         background: none;
         padding: 5px;
     }
 
+    nav {
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
     nav ul {
-        display: none
+        display: none;
+    }
+
+    nav li {
+        display: block;
+    }
+
+    #toggle:checked+header nav ul {
+        display: block;
+    }
+
+    #toggle:checked #nav-btn {
+        display: none;
     }
 
     header {
@@ -461,12 +458,16 @@ footer p {
     }
 
     #home {
-
+        height: 100vh;
+        min-width: max-content;
         background-image: url(image/home2-bk.gif);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+    }
 
+    #nav-btn {
+        display: inline;
     }
 
     #home pre {
@@ -475,19 +476,13 @@ footer p {
     }
 
     .sub-container {
-
         min-width: 100%;
         margin: 0;
-        /* padding: 0px;
-        min-height:max-content; */
-
+        padding: 0px;
     }
 
-}
-
-/* other screens */
-@media (min-width:501px) {
-    #nav-btn {
-        display: none;
+    .sub-container section {
+        margin: 10px;
+        padding: 0.3rem;
     }
 }
